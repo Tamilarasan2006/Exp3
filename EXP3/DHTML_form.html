@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Form Validation</title>
+
+  <style>
+    body{
+      font-family: Arial;
+      background-color: lightgray;
+    }
+
+    form{
+      background-color: white;
+      width: 300px;
+      padding: 15px;
+      margin: 100px auto;
+      border: 2px solid black;
+    }
+
+    input{
+      width: 95%;
+      padding: 5px;
+      margin: 5px 0px;
+    }
+
+    .error{
+      color: red;
+      display: none;
+      font-size: 14px;
+    }
+
+    button{
+      background-color: blue;
+      color: white;
+      padding: 8px;
+      width: 100%;
+      border: none;
+    }
+  </style>
+
+  <script>
+    function validate(){
+      var name = document.getElementById("name").value;
+      var email = document.getElementById("email").value;
+
+      var ok = true;
+
+      if(name == ""){
+        document.getElementById("nameError").style.display = "block";
+        ok = false;
+      }else{
+        document.getElementById("nameError").style.display = "none";
+      }
+
+      if(email == "" || email.indexOf("@") == -1){
+        document.getElementById("emailError").style.display = "block";
+        ok = false;
+      }else{
+        document.getElementById("emailError").style.display = "none";
+      }
+
+      return ok;
+    }
+  </script>
+</head>
+
+<body>
+
+  <form onsubmit="return validate()">
+    <h2>Form Validation</h2>
+
+    Name:<br>
+    <input type="text" id="name">
+    <p class="error" id="nameError">Enter name</p>
+
+    Email:<br>
+    <input type="text" id="email">
+    <p class="error" id="emailError">Enter valid email</p>
+
+    <button type="submit">Submit</button>
+  </form>
+
+</body>
+</html>
